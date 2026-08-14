@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotofolio Bayu</title>
+
+    <style>
+        .tombol {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.tombol:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+        .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(108, 92, 231, 0.25);
+}
+        html {
+    scroll-behavior: smooth;
+}
+        /* Tampilan foto besar */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.lightbox img {
+    max-width: 95%;
+    max-height: 85%;
+    border-radius: 12px;
+    object-fit: contain;
+}
+
+.tutup {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+        .galeri {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.foto {
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.foto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f0f14;
+            color: white;
+            text-align: center;
+        }
+
+        .hero {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #151525, #24245c);
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #cccccc;
+            font-size: 17px;
+        }
+
+        .tombol {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 13px 25px;
+            background: #6c5ce7;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+        }
+
+        section {
+            padding: 50px 20px;
+        }
+
+        section h2 {
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: #1b1b25;
+            padding: 25px;
+            margin: 15px auto;
+            max-width: 400px;
+            border-radius: 15px;
+        }
+
+        footer {
+            padding: 25px;
+            background: #09090d;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero" id="home">
+        <h1>FOTOFOLIO BAYU</h1>
+        <p>Kreator • Designer • Web Developer</p>
+
+        <a href="#karya" class="tombol">Lihat Karya</a>
+    </div>
+
+    <section>
+        <section id="tentang">
+
+        <div class="card">
+            <p>
+                Halo! Saya Bayu. Ini adalah website
+                fotofolio pribadi saya.
+            </p>
+        </div>
+    </section>
+
+   
+    <section id="karya">
+    <h2>Galeri Saya</h2>
+
+    <div class="galeri">
+
+        <div class="foto">
+            <img src="img/foto1.jpg" alt="Foto 1" onclick="bukaFoto(this)">
+            <img src="img/foto2.jpg" alt="Foto 2" onclick="bukaFoto(this)">
+            <img src="img/foto3.jpg" alt="Foto 3" onclick="bukaFoto(this)">
+        </div>
+
+        <div class="foto">
+            <img src="img/foto2.jpg" alt="Foto 2">
+        </div>
+
+        <div class="foto">
+            <img src="img/foto3.jpg" alt="Foto 3">
+        </div>
+
+        </div>
+   </section>
+
+    <section id="kontak">
+    <h2>Hubungi Saya</h2>
+
+    <p class="kontak-text">
+        Mau ngobrol atau ingin bekerja sama?
+        Silakan hubungi saya melalui media sosial.
+    </p>
+
+    <div class="sosial">
+
+        <a class="sosial-btn whatsapp"
+           href="https://wa.me/628132802805"
+           target="_blank">
+            💬 WhatsApp
+        </a>
+
+        <a class="sosial-btn instagram"
+           href="https://instagram.com/USERNAME_KAMU"
+           target="_blank">
+            📷 Instagram
+        </a>
+
+        <a class="sosial-btn tiktok"
+           href="https://tiktok.com/@USERNAME_KAMU"
+           target="_blank">
+            🎵 TikTok
+        </a>
+
+    </div>
+</section>
+
+    <footer>
+        © 2026 Fotofolio Bayu
+    </footer>
+<div class="lightbox" id="lightbox" onclick="tutupFoto()">
+    <span class="tutup">×</span>
+    <img id="fotoBesar" src="" alt="Foto besar">
+</div>
+<script>
+function bukaFoto(foto) {
+    document.getElementById("lightbox").style.display = "flex";
+    document.getElementById("fotoBesar").src = foto.src;
+}
+
+function tutupFoto() {
+    document.getElementById("lightbox").style.display = "none";
+}
+</script>
+/* Navigasi */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15, 15, 20, 0.95);
+    padding: 15px 10px;
+    border-bottom: 1px solid #333;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.navbar a:hover {
+    color: #8c7cff;
+}
+<nav class="navbar">
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#karya">Galeri</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+    </ul>
+</nav>
+</body>
+</html>
